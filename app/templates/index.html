@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
+        <meta name = "content" author = "Rigved Alankar">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel = "stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" >
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <nav class="navbar navbar-expand-sm  bg-dark navbar-dark justify-content-center sticky-top">
+            <p class="navbar-brand"> <strong>Elon Musk Tweet Analysis </strong>  </p>
+        </nav>
+        <br>
+        <br>
+        <div class = "container">
+            <div class = "row justify-content-center">
+                <img src="/static/musk-weed.jpg" class = "img-fluid"/>   
+            </div>
+            <article style = "position: relative;">
+                <p><b style = "font-size: 100px;">Y</b>es Elon!!! Since you like to tweet a lot and since we data scientists love data how can you not expect us to scrutinize your tweets. The webpage showcases the analysis made on tweets by Elon Musk. </p>
+                <br>
+                <br>
+                <h1> <strong> About the project </strong></h1>
+                <p> The analysis of the tweets is done in Python. Libraries involved in the project are Natural Language Toolkit(nltk),Spacey, re , numpy, pandas etc..</p>
+                <br>
+                <br>
+                <h1><strong> Contents of the website </strong></h1>
+                <div class="list-group">
+                    <a href="#importing" class="list-group-item list-group-item-action">Importing the libraries</a>
+                    <a href="#scraping" class="list-group-item list-group-item-action">Scraping the tweets</a>
+                    <a href="#reading" class="list-group-item list-group-item-action">Reading the dataset</a>
+                    <a href="#splitting" class="list-group-item list-group-item-action">Splitting tweets into words</a>
+                    <a href="#stemming" class="list-group-item list-group-item-action">Applying Stemming</a>
+                    <a href="#removal" class="list-group-item list-group-item-action">Removal of Stop Words</a>
+                    <a href="#words" class="list-group-item list-group-item-action">Top words Mentioned in tweets</a>
+                    <a href="#organisations" class="list-group-item list-group-item-action">Top organisations mentioned in tweets</a>
+                    <a href="#people" class="list-group-item list-group-item-action">Top people mentioned in tweets</a>
+                </div>
+                <br>
+                <br>
+                <section>
+                    <h1><b>Importing the libraries</b></h1>
+                    <br>
+                    <p id="importing"> First we will import the requisite libraries that will be involved in the project </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/12c22990d4a3c9dd77d91ba6faddce11.js"></script>
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Scraping Tweets</b></h1>
+                    <br>
+                    <p id="scraping"> We will scrape the tweets from the twitter handle of <a href = "https://twitter.com/elonmusk?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" style = "color: blue;"> Elon Musk </a> using the twint library. Refer to the twint documentation <a href="https://github.com/twintproject/twint" target="_blank" style = "color: blue;"> <u> here</u> </a>
+                    We will extract tweets from elon musk's twitter account starting from 1st April, 2021 using the code below. The tweets will be stored in csv format and will be saved in a csv file. </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/5680063f50fd6e4f535f24a8a57961a4.js"></script>
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Reading the dataset</b></h1>
+                    <br>
+                    <p id="reading"> Now we will load the csv file using pandas read_csv function and store it in a dataframe named df. If we look at the shape of df we can see we have extracted 1104 tweets. After that we will store the tweets column in a separate dataframe to make it easier for us to analyse tweets.   </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/c55ed43e670236f6b440ae9b229dc172.js"></script>
+                    <br>
+                    <h2>Output</h2>
+                    <img src="static/images/shape.png">
+                    <br>
+                    <h2><i><b>No. of tweets per day</b></i></h2>
+                    <p>Let us look at the no. of tweets per day tweeted by Elon Musk from 1 April 2021 to 20 May 2021.</p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/f76ca34ae99f02ec5842dd98e0b468e4.js"></script>
+                    <br>
+                    <h3><b>Output</b></h3>
+                    <br>
+                    <img src = "static/images/datesvstweets.png">
+                    <br>
+                    <br>
+                    <h2><i><b>Tweets containing videos</b></i></h2>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/ea885e68f4736437e88b32221f86bd89.js"></script>      
+                    <br>              
+                    <h3><b>Output</b></h3>
+                    <br>
+                    <img src = "static/images/videosvstweets.png">
+                    <br>
+                    <br>
+                    <h2><i><b>Languages used in tweets</b></i></h2>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/cfbb236a5b15129d5b29cbbe2306c7ce.js"></script>
+                    <br>
+                    <h3><b>Output</b></h3>
+                    <br>
+                    <img src = "static/images/languagesvstweets.png">
+                    <br>
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Splitting tweets into words</b></h1>
+                    <br>
+                    <p id="splitting"> Now we will split the tweets into it's constituent words by storing all the tweets in a list (called all_sentences) then for each sentence in the list calling the split method and appending the words in a list (called lines). After that we will remove punctuations using the re library.  </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/49c0fe305c3a4f8724724357eb2434e1.js"></script>               
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Stemming</b></h1>
+                    <br>
+                    <p id="stemming"> Now we will apply stemming. Stemming refers to the process of removal of suffix from the word. In this project we will be using the <a href = "https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html" style = "color: blue;" target = "_blank"><u> Snowball Stemmer </u></a>  </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/3dd8763e111c2129bcb15f01857e4bc3.js"></script>                
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Removal of stop words</b></h1>
+                    <br>
+                    <p id="removal"> A stop word is a commonly used word (such as “the”, “a”, “an”, “in”) that a search engine has been programmed to ignore, both when indexing entries for searching and when retrieving them as the result of a search query.
+                     We would not want these words to take up space in our database, or taking up valuable processing time. For this, we can remove them easily, by using <a href = "https://spacy.io/usage" target="_blank" style="color: blue;"><u>spaCy</u></a> a free open source natural language processing library in Python. spaCy’s trained pipelines can be installed as Python packages. This means that they’re a component of your application, just like any other module. 
+                    In this project we will use spaCy's en_core_web_lg trained pipeline to remove stop words</p>
+                    <br>
+                    <p> First load the pretrained pipeline which can be download from here.</p>
+                    <script src="https://gist.github.com/RigvedRocks/7f2cba5dec00559ab84ea950b8415361.js"></script>
+                    <br>
+                    <p> Then we will remove the stop words</p>
+                    <script src="https://gist.github.com/RigvedRocks/9226207ac2ce661739aae5c3cd77d3ec.js"></script>                
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b> Plotting the results </b></h1>
+                    <br>
+                    <p id="plot"> Then we will potray our results using a bar graph. The function for plotting the results is given below. </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/a6c89ab4efe04e25cb0da30a4537a92e.js"></script>   
+             
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Top words mentioned in tweets</b></h1>
+                    <br>
+                    <p id="words"> Now we will see the top 20 words which are mentioned in Elon Musk's tweets. </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/2100943336377642486c594b2542cbbc.js"></script>    
+                    <br>
+                    <h2><b> Output </b></h2>
+                    <img src="static/images/words.png">
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Top organisations mentioned in tweets</b></h1>
+                    <br>
+                    <p id="organisations"> For this we will train the punctutation free words on the pretrained model of spaCy library. Then we will create a dataframe from the trained dataset containing the word alongwith it's associated entity. Then to filter rows where in the entity's are organisation we will make use of where method by pandas. </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/f12cc0a4918dd4276cf9811f945f30f1.js"></script>
+                    <br>
+                    <h2><b> Output </b></h2>
+                    <img src="/static/images/organizations.png">           
+                </section>
+                <br>
+                <hr>
+                <br>
+                <section>
+                    <h1><b>Top people mentioned in tweets</b></h1>
+                    <br>
+                    <p id="people"> To find the top people mentioned in the tweets the procedure will be similar to the one applied in finding the top organisations with one exception being that rows will be filtered where in the entity is a person. </p>
+                    <br>
+                    <script src="https://gist.github.com/RigvedRocks/0ec4f29d87495d099ed2993911f9251a.js"></script>    
+                    <br>
+                    <h2><b> Output </b></h2>
+                    <img src="static/images/people.png">           
+                </section>
+                <br>
+                <hr>
+                <br>
+            </article>
+        </div>
+        <br>
+        <br>
+
+       
+       
+        
+        <footer class="bg-light text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;background-color: rgb(0,0,0); color: white;">
+              Created by Rigved Alankar © 2021 Copyright
+              <br>
+              Project Github:<a  href="https://github.com/Rigved-Rocks" style="color:blue;">click here</a>
+            </div>
+            <!-- Copyright -->
+        </footer> 
+    </body>
+    
+</html>
